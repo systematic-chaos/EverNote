@@ -1,0 +1,6 @@
+Evernote client
+
+Android application which serves as a client for the Evernote platform.
+It allows an Evernote user to authenticate herself, as well as check and edit her text notes, which are ordered according to the note attribute selected as a sorting criteria by the user.
+The application also allows the user to create new text notes, by means of one of two different ways. New notes not only can be directly composed and written as regular text notes, they can also be handwritten by the user. When saved, handwritten notes will be processed by an OCR, so that the next time the note is opened by the user it will display its contents in plain text form.
+

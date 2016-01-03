@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">EverNote</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="login_error">Error de autenticación</string>
+    <string name="no_notes">No se ha creado ninguna nota</string>
+    <string name="retrieval_error">Error recuperando notas de la plataforma</string>
+    <string name="open_note_error">Error abriendo el contenido de la nota</string>
+    <string name="save_note_error">Error guardando el contenido de la nota</string>
+    <string name="save_note_title">Guardar nota</string>
+    <string name="save_changes_question">¿Desea guardar los cambios realizados en el contenido de la nota?</string>
+    <string name="save">Guardar</string>
+    <string name="discard">Descartar</string>
+    <string name="dismiss">Cancelar</string>
+    <string name="ok">Aceptar</string>
+    <string name="new_note">Nueva nota</string>
+    <string name="text_note">Nota de texto</string>
+    <string name="graphic_note">Nota gráfica</string>
+    <string name="note_title">Título de la nota</string>
+    <string name="connection_error">Error de conexión</string>
+    <string name="xml_error">Error en el análisis del contenido de la nota</string>
+
+    <string-array name="notes_ordering_array">
+        <item>Título</item>
+        <item>Fecha</item>
+    </string-array>
+    <string name="title_activity_create_draw_note">CreateDrawNoteActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+</resources>
