@@ -1,20 +1,19 @@
 package corp.katet.evernote;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 
-public class NewNoteActivity extends AppCompatActivity {
+public class NewNoteActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_note_menu);
 
-        ((Button) findViewById(R.id.new_text_note_button)).setOnClickListener(
+        findViewById(R.id.new_text_note_button).setOnClickListener(
                 new OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -24,7 +23,7 @@ public class NewNoteActivity extends AppCompatActivity {
                     }
                 });
 
-        ((Button) findViewById(R.id.new_graphic_note_button)).setOnClickListener(
+        findViewById(R.id.new_graphic_note_button).setOnClickListener(
                 new OnClickListener() {
                     @Override
                     public void onClick(View v) {
