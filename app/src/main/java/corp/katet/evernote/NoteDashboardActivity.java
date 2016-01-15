@@ -2,6 +2,7 @@ package corp.katet.evernote;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,13 +30,15 @@ import com.evernote.edam.type.NoteSortOrder;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class NoteDashboardActivity extends AppCompatActivity {
 
-    private NoteOrdering mOrderBy = null;
+    private NoteOrdering mOrderBy;
     private NoteAdapter mNotesAdapter;
     private ProgressBar mProgressBarLoader;
 
@@ -47,16 +50,6 @@ public class NoteDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note_dashboard);
 
         initializeUiWidgets();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // After resuming the Activity, check and refresh the data in the note adapter
-        if (mOrderBy != null) {
-            retrieveNotes(true);
-        }
     }
 
     private void initializeUiWidgets() {
@@ -82,7 +75,8 @@ public class NoteDashboardActivity extends AppCompatActivity {
                 }
 
                 // After setting the ordering criteria, query for the notes to retrieve
-                retrieveNotes(true);
+                mNotesAdapter.clear();
+                retrieveNotes();
             }
 
             @Override
@@ -94,10 +88,9 @@ public class NoteDashboardActivity extends AppCompatActivity {
         // Setup the ListView
         ListView noteList = (ListView) findViewById(R.id.notes_list_view);
         noteList.setAdapter(mNotesAdapter = new NoteAdapter(this, R.layout.note_layout));
-        //mNotesAdapter = new NoteAdapter(this, R.layout.note_layout);
-        TextView emptyView = new TextView(this);
-        emptyView.setText(R.string.no_notes);
-        noteList.setEmptyView(emptyView);
+        TextView emptyText = (TextView) findViewById(android.R.id.empty);
+        emptyText.setText(getString(R.string.no_notes));
+        noteList.setEmptyView(emptyText);
         noteList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         noteList.setOnScrollListener(new ScrollListener());
         noteList.setOnItemClickListener(new OnItemClickListener() {
@@ -111,12 +104,8 @@ public class NoteDashboardActivity extends AppCompatActivity {
         });
     }
 
-    private void retrieveNotes(boolean clearData) {
+    private void retrieveNotes() {
         mProgressBarLoader.setVisibility(View.VISIBLE);
-
-        if (clearData) {
-            mNotesAdapter.clear();
-        }
 
         // Filter the search results and sort them according to the specified criteria
         NoteFilter filter = new NoteFilter();
@@ -191,6 +180,34 @@ public class NoteDashboardActivity extends AppCompatActivity {
                             new Date(note.isSetUpdated() ? note.getUpdated() : note.getCreated())));
             return view;
         }
+
+        @Override
+        public void clear() {
+            super.clear();
+            data.clear();
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public void add(NoteMetadata note) {
+            super.add(note);
+            data.add(note);
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public void addAll(@NonNull Collection<? extends NoteMetadata> noteCollection) {
+            super.addAll(noteCollection);
+            data.addAll(noteCollection);
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public void addAll(@NonNull NoteMetadata... notes) {
+            super.addAll(notes);
+            data.addAll(Arrays.asList(notes));
+            notifyDataSetChanged();
+        }
     }
 
     /**
@@ -214,7 +231,7 @@ public class NoteDashboardActivity extends AppCompatActivity {
             if (currentFirstVisibleItem + currentVisibleItemCount == currentTotalItemCount
                     && scrollState == SCROLL_STATE_IDLE) {
                 // Scroll has completed
-                retrieveNotes(false);
+                retrieveNotes();
             }
         }
     }

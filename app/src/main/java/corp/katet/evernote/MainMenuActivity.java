@@ -1,9 +1,6 @@
 package corp.katet.evernote;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,20 +24,14 @@ public class MainMenuActivity extends AppCompatActivity
     }
 
     public void authenticate(View v) {
-        if (checkNetworkConnection()) {
-            if (!EvernoteSession.getInstance().isLoggedIn()) {
-                EvernoteSession.getInstance().authenticate(this);
-            } else {
-                onLoginFinished(true);
-            }
-        } else {
-            Toast.makeText(this, R.string.connection_error, Toast.LENGTH_LONG).show();
-        }
+        EvernoteSession.getInstance().authenticate(this);
     }
 
     @Override
     public void onLoginFinished(boolean successful) {
         // Handle login result
+        Toast.makeText(this, "onLoginFinished: " + successful, Toast.LENGTH_SHORT).show();
+
         if (successful) {
             startActivity(new Intent(this, NoteDashboardActivity.class));
         } else {
@@ -50,6 +41,9 @@ public class MainMenuActivity extends AppCompatActivity
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Toast.makeText(this, "onActivityResult: "
+                + (requestCode == EvernoteSession.REQUEST_CODE_LOGIN) + " "
+                + (resultCode == AppCompatActivity.RESULT_OK), Toast.LENGTH_SHORT).show();
         switch (requestCode) {
             case EvernoteSession.REQUEST_CODE_LOGIN:
                 onLoginFinished(resultCode == AppCompatActivity.RESULT_OK);
@@ -59,14 +53,5 @@ public class MainMenuActivity extends AppCompatActivity
                 super.onActivityResult(requestCode, resultCode, data);
                 break;
         }
-    }
-
-    /**
-     * Before attempting to authenticate, makes sure that there is a network connection.
-     */
-    private boolean checkNetworkConnection() {
-        NetworkInfo networkInfo = ((ConnectivityManager) getSystemService(
-                Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
     }
 }
