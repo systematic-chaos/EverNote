@@ -3,14 +3,18 @@
     package="corp.katet.evernote" >
 
     <application
-        android:name=".EvernoteApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:name="EvernoteApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_add_green_elephant"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/login" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,25 +25,23 @@
         <activity android:name="com.evernote.client.android.login.EvernoteLoginActivity" />
         <activity
             android:name=".NoteDashboardActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity android:name=".UpdateTextNoteActivity" >
-        </activity>
+            android:label="@string/app_name" />
+        <activity
+            android:name=".UpdateTextNoteActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".CreateTextNoteActivity"
-            android:label="@string/text_note" >
-        </activity>
+            android:label="@string/text_note"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".NewNoteActivity"
             android:finishOnTaskLaunch="true"
             android:label="@string/new_note"
-            android:theme="@android:style/Theme.Holo.DialogWhenLarge"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".CreateDrawNoteActivity"
-            android:label="@string/title_activity_create_draw_note" >
-        </activity>
+            android:label="@string/title_activity_create_draw_note" />
     </application>
 
 </manifest>
