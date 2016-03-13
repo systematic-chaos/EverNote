@@ -363,7 +363,6 @@ public class UpdateTextNoteActivity extends TextNoteActivity {
             }
             // Crop the note html content (excluding the note's prefix and
             // suffix) before setting its plain contents in the text area
-            int startIndex, endIndex;
             String content = "";
             if (note.isSetContent()) {
                 content = note.getContent();

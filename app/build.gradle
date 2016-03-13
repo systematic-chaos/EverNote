@@ -22,6 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.evernote:android-sdk:2.0.0-RC3'
     compile 'com.android.support:design:23.1.0'
+    compile 'com.evernote:android-sdk:2.0.0-RC3'
+    compile 'org.apache.thrift:libthrift:0.9.3'
 }
