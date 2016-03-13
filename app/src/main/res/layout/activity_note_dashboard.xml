@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="corp.katet.evernote.NoteDashboardActivity">
+    tools:context="corp.katet.evernote.activity.NoteDashboardActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,18 +35,54 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/text_note_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="140dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_text"
+        android:onClick="newTextNote"
+        app:fabSize="mini"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"
+        app:backgroundTint="#C3C3C3"
+        app:rippleColor="#C3C3C3" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/draw_note_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_draw"
+        android:onClick="newDrawNote"
+        app:fabSize="mini"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"
+        app:backgroundTint="#C3C3C3"
+        app:rippleColor="#C3C3C3" />
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/new_note_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_green_elephant"
+        android:onClick="newNote"
         app:fabSize="normal"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:borderWidth="0dp"
         app:backgroundTint="#16A600"
-        app:rippleColor="#16A600"
-        android:onClick="newNote" />
+        app:rippleColor="#16A600" />
 
 </android.support.design.widget.CoordinatorLayout>

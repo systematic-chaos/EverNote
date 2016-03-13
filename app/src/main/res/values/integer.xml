@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="fab_flip_time_full">1500</integer>
+    <integer name="fab_flip_time_half">750</integer>
+    <integer name="thumbnail_image_size">100</integer>
+    <integer name="full_image_size">236</integer>
+    <integer name="max_memory_size">4096</integer>
+</resources>

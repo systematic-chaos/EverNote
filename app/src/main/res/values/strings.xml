@@ -6,6 +6,7 @@
     <string name="retrieval_error">Error recuperando notas de la plataforma</string>
     <string name="open_note_error">Error abriendo el contenido de la nota</string>
     <string name="save_note_error">Error guardando el contenido de la nota</string>
+    <string name="save_note_success">Se ha guardado con éxito la nota</string>
     <string name="save_note_title">Guardar nota</string>
     <string name="save_changes_question">¿Desea guardar los cambios realizados en el contenido de la nota?</string>
     <string name="save">Guardar</string>
@@ -18,6 +19,9 @@
     <string name="note_title">Título de la nota</string>
     <string name="connection_error">Error de conexión</string>
     <string name="xml_error">Error en el análisis del contenido de la nota</string>
+    <string name="retrieve_image_error">Error recuperando la imagen</string>
+    <string name="no_image_picked">No se ha recuperado ninguna imagen</string>
+    <string name="note_xml_prefix">style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"></string>
 
     <string-array name="notes_ordering_array">
         <item>Título</item>
